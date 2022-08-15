@@ -1,3 +1,6 @@
+env:
+  WAYPOINT_SERVER_TOKEN: "HZCwuUtmrrpbHmG8aC3tEkTzNGB2bjUJkpUyU1StbJgUqDBdaXuQh1rHVumo6rqakVeohzVKDEivNUJa6SzHuwe85Gch1gTB6eHgKgFkmXsSDRQkTi56WmfEacGFp3oh22kQyXLWzPCg7Arjz5qrebsJY1fpcXgQUube"
+  AUTH_TOKEN: "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"
 name: 'deploy'
 on: push
 
