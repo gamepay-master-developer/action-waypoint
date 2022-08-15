@@ -2,6 +2,12 @@ env:
   WAYPOINT_SERVER_TOKEN: "HZCwuUtmrrpbHmG8aC3tEkTzNGB2bjUJkpUyU1StbJgUqDBdaXuQh1rHVumo6rqakVeohzVKDEivNUJa6SzHuwe85Gch1gTB6eHgKgFkmXsSDRQkTi56WmfEacGFp3oh22kQyXLWzPCg7Arjz5qrebsJY1fpcXgQUube"
   AUTH_TOKEN: "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"
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  WAYPOINT_SERVER_ADDR: waypoint.example.com:9701
+  WAYPOINT_SERVER_TLS: 1
+  WAYPOINT_SERVER_TLS_SKIP_VERIFY: 1
+
+
+
 name: 'deploy'
 on: push
 
@@ -9,35 +15,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          npm install
-      - run: |
-          npm run all
-      - uses: ./
-        name: Setup
-        with:
-          version: 'waypoint_0.9.1'
-          github_token: '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'
-          waypoint_server_address: '2.tcp.ngrok.io:17860'
-          waypoint_server_ui: 'https://localhost:9702'
-          waypoint_server_token: 'HZCwuUtmrrpbHmG8aC3tEkTzNGB2bjUJkpUyU1StbJgUqDBdaXuQh1rHVumo6rqakVeohzVKDEivNUJa6SzHuwe85Gch1gTB6eHgKgFkmXsSDRQkTi56WmfEacGFp3oh22kQyXLWzPCg7Arjz5qrebsJY1fpcXgQUube'
-      - uses: ./
-        name: Build
-        with:
-          operation: build
-          version: '0.0.1-beta1'
-          workspace: default
-      - uses: ./
-        name: Deploy
-        with:
-          operation: deploy
-          version: '0.0.1-beta1'
-          workspace: default
-      - uses: ./
-        name: Release
-        if: ${{ github.ref == 'refs/heads/master' }}
-        with:
-          operation: release
-          version: '0.0.1-beta1'
-          workspace: default
+    - uses: actions/checkout@v2
+    - uses: hashicorp/action-setup-waypoint@'0.1.0'
+    - run: waypoint init
+    - run: waypoint build
