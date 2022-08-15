@@ -14,7 +14,7 @@ jobs:
         name: Setup
         with:
           version: '0.0.1-beta1'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.AUTH_TOKEN }}
           waypoint_server_address: '2.tcp.ngrok.io:17860'
           waypoint_server_ui: 'https://localhost:9702'
           waypoint_server_token: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
