@@ -1,6 +1,7 @@
 env:
   WAYPOINT_SERVER_TOKEN: "HZCwuUtmrrpbHmG8aC3tEkTzNGB2bjUJkpUyU1StbJgUqDBdaXuQh1rHVumo6rqakVeohzVKDEivNUJa6SzHuwe85Gch1gTB6eHgKgFkmXsSDRQkTi56WmfEacGFp3oh22kQyXLWzPCg7Arjz5qrebsJY1fpcXgQUube"
   AUTH_TOKEN: "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"
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 name: 'deploy'
 on: push
 
@@ -8,14 +9,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Set the env ACTIONS_ALLOW_UNSECURE_COMMANDS
-        id: step_one
-        run: |
-          echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" >> $GITHUB_ENV
-          - name: Use the value
-          id: step_two
-          run: |
-            echo "${{ env.ACTIONS_ALLOW_UNSECURE_COMMANDS }}" 
       - uses: actions/checkout@v2
       - run: |
           npm install
