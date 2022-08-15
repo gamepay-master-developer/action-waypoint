@@ -17,10 +17,10 @@ jobs:
         name: Setup
         with:
           version: '0.0.1-beta1'
-          github_token: echo ${{ env.AUTH_TOKEN }}
+          github_token: ${{ env.AUTH_TOKEN }}
           waypoint_server_address: '2.tcp.ngrok.io:17860'
           waypoint_server_ui: 'https://localhost:9702'
-          waypoint_server_token: echo ${{ env.WAYPOINT_SERVER_TOKEN }}
+          waypoint_server_token: ${{ env.WAYPOINT_SERVER_TOKEN }}
       - uses: ./
         name: Build
         with:
